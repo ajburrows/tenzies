@@ -16,11 +16,11 @@ export default function App(){
 
   console.log(dieComponentsArray)
   return(
-    <main className="game-container">
+    <main>
       <div className="dice-container">
         {dieComponentsArray}
       </div>
-
+      <button className="reroll-button" onClick={() => console.log("Reroll")}>Reroll</button>
     </main>
   )
 }

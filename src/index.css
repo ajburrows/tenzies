@@ -21,17 +21,19 @@ div#root {
   max-width: 500px;
 }
 
-main{
+main {
   display: flex;
+  flex-direction: column;
+
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   height: 100%;
   border-radius: 20px;
   padding: 50px;
   background-color: #F5F5F5;
 }
 
-.die{
+.die {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,9 +53,31 @@ main{
   font-weight: 700;
 }
 
-.dice-container{
+.dice-container {
   display: grid;
   grid-template-columns: repeat(5,1fr);
   grid-template-rows: repeat(2, auto);
   gap: 30px;
+}
+
+.reroll-button {
+  background-color: #5035FF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+
+  width: 150px;
+  height: 50px;
+
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 1.5rem;
+
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.reroll-button:active {
+  background-color: #3426b9;
+  transform: scale(0.95);
 }
