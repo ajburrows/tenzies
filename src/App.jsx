@@ -1,10 +1,12 @@
 import Die from "./components/Die"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { nanoid } from "nanoid"
 import Confetti from 'react-confetti' 
 
+
 export default function App(){
   const [dice, setDice] = useState(() => generateDiceObjs())
+  const newGameButtonRef = useRef(null)
 
   function checkGameOver(){
     const firstVal = dice[0].value
@@ -16,12 +18,12 @@ export default function App(){
     return true
   }
 
-
   function generateDiceObjs(){
     const res = []
     for (let i = 0; i < 10; i++){
       res.push({
-        value: Math.ceil(Math.random() * 6),
+        //value: Math.ceil(Math.random() * 6),
+        value: 1,
         isHeld: false,
         id: nanoid()
       })
@@ -47,7 +49,14 @@ export default function App(){
     setDice(generateDiceObjs)
   }
 
+  console.log(newGameButtonRef)
   const gameWon = checkGameOver()
+
+  useEffect(() => {
+    if (gameWon){
+      newGameButtonRef.current.focus()
+    }
+  } , [gameWon])
 
   const dieComponentsArray = dice.map(dieObj => (
     <Die
@@ -63,12 +72,15 @@ export default function App(){
   return(
     <main>
       {gameWon ? <Confetti /> : null }
+      <div aria-live="polite" className="sr-only">
+        {gameWon ? <p>Congratulations, you won! Press "New Game" to play again.</p> : null}
+      </div>
       <h1 className="title">Tenzies</h1>
       <p className="instructions">Roll until all dice are the same. Click each die to freeze or unfreeze them.</p>
       <div className="dice-container">
         {dieComponentsArray}
       </div>
-      <button className="reroll-button" onClick={gameWon ? restartGame : rerollDice}>{gameWon ? "New Game" : "Reroll" }</button>
+      <button className="reroll-button" onClick={gameWon ? restartGame : rerollDice} ref={newGameButtonRef}>{gameWon ? "New Game" : "Reroll" }</button>
     </main>
   )
 }
