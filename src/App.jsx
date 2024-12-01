@@ -43,6 +43,10 @@ export default function App(){
     ))
   }
 
+  function restartGame(){
+    setDice(generateDiceObjs)
+  }
+
   const gameWon = checkGameOver()
 
   const dieComponentsArray = dice.map(dieObj => (
@@ -64,7 +68,7 @@ export default function App(){
       <div className="dice-container">
         {dieComponentsArray}
       </div>
-      <button className="reroll-button" onClick={rerollDice}>{gameWon ? "New Game" : "Reroll" }</button>
+      <button className="reroll-button" onClick={gameWon ? restartGame : rerollDice}>{gameWon ? "New Game" : "Reroll" }</button>
     </main>
   )
 }
