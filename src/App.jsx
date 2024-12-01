@@ -12,6 +12,11 @@ export default function App(){
     return res
   }
 
+  function rerollDice(){
+    console.log("Reroll")
+    setDieVals(generateAllNewDice())
+  }
+
   const dieComponentsArray = dieVals.map(val => <Die value={val} />)
 
   console.log(dieComponentsArray)
@@ -20,7 +25,7 @@ export default function App(){
       <div className="dice-container">
         {dieComponentsArray}
       </div>
-      <button className="reroll-button" onClick={() => console.log("Reroll")}>Reroll</button>
+      <button className="reroll-button" onClick={rerollDice}>Reroll</button>
     </main>
   )
 }
