@@ -1,25 +1,28 @@
 import Die from "./components/Die"
 import { useState } from "react"
+import { nanoid } from "nanoid"
 
 export default function App(){
-  const [dieVals, setDieVals] = useState(generateAllNewDice())
+  const [dice, setDice] = useState(generateDiceObjs())
 
-  function generateAllNewDice(){
+  function generateDiceObjs(){
     const res = []
     for (let i = 0; i < 10; i++){
-      res.push(Math.ceil(Math.random() * 6))
+      res.push({
+        value: Math.ceil(Math.random() * 6),
+        isHeld: false,
+        key: nanoid()
+      })
     }
     return res
   }
 
   function rerollDice(){
-    console.log("Reroll")
-    setDieVals(generateAllNewDice())
+    setDice(generateDiceObjs())
   }
 
-  const dieComponentsArray = dieVals.map(val => <Die value={val} />)
+  const dieComponentsArray = dice.map(dieObj => <Die value={dieObj.value} key={dieObj.key} />)
 
-  console.log(dieComponentsArray)
   return(
     <main>
       <div className="dice-container">
