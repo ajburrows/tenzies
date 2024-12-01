@@ -22,8 +22,7 @@ export default function App(){
     const res = []
     for (let i = 0; i < 10; i++){
       res.push({
-        //value: Math.ceil(Math.random() * 6),
-        value: 1,
+        value: Math.ceil(Math.random() * 6),
         isHeld: false,
         id: nanoid()
       })
