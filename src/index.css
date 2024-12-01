@@ -41,7 +41,6 @@ main {
   width: 55px;
   height: 55px;
 
-  background-color: white;
   color: #2B283A;
 
   border: none;
@@ -58,6 +57,7 @@ main {
   grid-template-columns: repeat(5,1fr);
   grid-template-rows: repeat(2, auto);
   gap: 30px;
+  margin-bottom: 40px;
 }
 
 .reroll-button {
@@ -80,4 +80,16 @@ main {
 .reroll-button:active {
   background-color: #3426b9;
   transform: scale(0.95);
+}
+
+.title {
+    font-size: 40px;
+    margin: 0;
+}
+
+.instructions {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    margin-top: 0;
+    text-align: center;
 }
