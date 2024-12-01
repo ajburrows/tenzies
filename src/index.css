@@ -22,7 +22,38 @@ div#root {
 }
 
 main{
-  background-color: #F5F5F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   border-radius: 20px;
+  padding: 50px;
+  background-color: #F5F5F5;
+}
+
+.die{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 55px;
+  height: 55px;
+
+  background-color: white;
+  color: #2B283A;
+
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0px 3px 2px 0px rgba(74, 78, 116, 0.3);
+
+  font-family: "Inter";
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.dice-container{
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 30px;
 }
